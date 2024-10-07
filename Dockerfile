@@ -1,8 +1,12 @@
-FROM openjdk:11-jre-slim
+FROM maven:3.6.3-jdk-11
 
-ADD target/spring-petclinic-maven-java11-2.1.0.BUILD-SNAPSHOT.jar app.jar
+WORKDIR /app
 
-ARG JVM_OPTS
-ENV JVM_OPTS=${JVM_OPTS}
+COPY pom.xml .
+COPY src ./src
 
-CMD java ${JVM_OPTS} -jar app.jar
+RUN mvn clean package 
+
+EXPOSE 8080
+
+CMD ["sh", "-c", "java -jar /app/target/*.jar"]
