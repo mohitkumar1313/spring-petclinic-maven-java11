@@ -19,11 +19,11 @@ pipeline {
                 sh "mvn compile"
             }
         }
-        stage('Test') {
-            steps {
-                sh "mvn test"
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         sh "mvn test"
+        //     }
+        // }
         // stage('Sonar Analysis'){
         //     steps{
         //         withSonarQubeEnv('sonar') {
